@@ -1,0 +1,14 @@
+
+
+.exclaim .reveal .state-background {
+  background: orange;
+} 
+
+.exclaim .reveal h1,
+.exclaim .reveal h2,
+.exclaim .reveal p {
+  color: purple;
+}
+.exclaim .reveal ul {
+  color: blue;
+}

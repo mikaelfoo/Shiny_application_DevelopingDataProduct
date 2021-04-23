@@ -1,0 +1,12 @@
+name: Shiny_R_pitch_Application
+title: Shiny_R_pitch_Application
+username:
+account: sh37ty-mike-foo
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4019132
+bundleId: 4509408
+url: https://sh37ty-mike-foo.shinyapps.io/Shiny_R_pitch_Application/
+when: 1619180455.54409
+asMultiple: FALSE
+asStatic: FALSE

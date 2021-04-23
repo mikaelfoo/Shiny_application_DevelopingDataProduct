@@ -1,0 +1,117 @@
+
+Prediction Application Presentation
+========================================================
+author: Mike Foo
+date: 20-April-2021
+autosize: true
+font-import: http://fonts.googleapis.com/css?family=Risque
+font-family: 'Risque'
+css: custom.css
+
+
+Introduction
+========================================================
+transition: rotate
+
+~~This application allow a user to explore linear prediction on:~~
+
+- Trees data
+- mtcars data
+
+The plot in each tab allows users to freely manipulate the data points. on
+
+
+Tabs Description
+========================================================
+transition: concave
+type: exclaim
+
+There is a total of 4 tabs
+
+- Tab 1 - Tree data prediction by highlighting input data point
+- Tab 2 - two linear prediction on mtcars data with slider input
+- Tab 3 - linear prediction on mtcars data by highlighting input data point
+- Tab 4 - SVM (support vector machine) prediction on mtcars data by highlighting input data point
+
+Tab 1 and Tab 2 plot sample
+========================================================
+transition: zoom
+
+Tab 1 plot example
+```{r, echo=FALSE}
+model<-lm(Volume ~ Girth, data = trees)
+plot(trees$Girth, trees$Volume, xlab = "Girth",
+             ylab = "Volume", main = "Tree Measurements",
+             cex = 1.5, pch = 16, bty = "n")
+abline(model, col = "blue", lwd = 2)
+```
+
+***
+
+Tab 2 plot example 
+```{r, echo=FALSE}
+#plot(cars)
+mtcars$mpgsp <- ifelse(mtcars$mpg - 20 > 0, mtcars$mpg - 20, 0)
+model1 <- lm(hp ~ mpg, data = mtcars)
+model2 <- lm(hp ~ mpgsp + mpg, data = mtcars)
+#predict(model1, newdata = data.frame(mpg = mtcars$mpg))
+model2lines <- predict(model2, newdata = data.frame(
+                mpg = 10:35, mpgsp = ifelse(10:35 - 20 > 0, 10:35 - 20, 0)
+            ))
+plot(mtcars$mpg, mtcars$hp, xlab = "Miles Per Gallon", 
+             ylab = "Horsepower", bty = "n", pch = 16,
+             xlim = c(10, 35), ylim = c(50, 350))
+abline(model1, col = "red", lwd = 2)
+lines(10:35, model2lines, col = "blue", lwd = 2)
+```
+
+Tab 3 and Tab 4 plot sample
+========================================================
+transition: fade
+type: exclaim
+
+Tab 3 example plot
+```{r, echo=FALSE}
+#summary(cars)
+plot(mtcars$mpg, mtcars$hp, xlab = "Miles Per Gallon", 
+             ylab = "Horsepower", bty = "n", pch = 16,
+             xlim = c(10, 35), ylim = c(50, 350))
+model3<-lm(hp ~ mpg, data = mtcars[1:10,])
+abline(model3, col = "green", lwd = 2)
+```
+***
+Tab 4 example plot
+```{r, echo=FALSE}
+#plot(cars)
+library('e1071')
+svmod<-svm(mtcars$hp ~ mtcars$mpg)
+yv<-predict(svmod, mtcars$mpg)
+plot(mtcars$mpg, mtcars$hp, xlab = "Miles Per Gallon", 
+             ylab = "Horsepower", bty = "n", pch = 16,
+             xlim = c(10, 35), ylim = c(50, 350))
+lines(x = mtcars$mpg, y = yv, col="red", cex = 1, pch = 16)
+```
+
+
+<!-- Here's what you need -->
+<!-- https://support.rstudio.com/hc/en-us/articles/200486468 -->
+
+<!-- 5 slides to pitch our idea done in Slidify or Rstudio Presenter -->
+<!-- Your presentation pushed to github or Rpubs -->
+<!-- A link to your github or Rpubs presentation pasted into the provided text box -->
+<!-- Your presentation must satisfy the following -->
+
+<!-- It must be done in Slidify or Rstudio Presenter -->
+<!-- It must be 5 pages -->
+<!-- It must be hosted on github or Rpubs -->
+<!-- It must contained some embedded R code that gets run when slidifying the document -->
+
+<!-- Your Reproducible Pitch -->
+
+<!-- Was the presentation completed in slidify or R Presenter? -->
+<!-- Was it 5 pages? -->
+<!-- Did it contain an R expression that got evaluated and displayed? -->
+<!-- Was it hosted on github or Rpubs? -->
+<!-- Was the server calculation displayed in the html page? -->
+<!-- Here's your opportunity to give this presentation a +1 for being well done. Did they tinker around with the default style? Was the presentation particularly lucid and well organized? In other words, the student made a legitimate try. -->
+<!-- There were no R errors displayed in the presentation. -->
